@@ -12,7 +12,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <graphwalker.version>4.3.1</graphwalker.version>
+        <graphwalker.version>4.3.3</graphwalker.version>
     </properties>
 
     <dependencies>
@@ -50,6 +50,15 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>*.classpath</exclude>
+                    <exclude>*.project</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.graphwalker</groupId>

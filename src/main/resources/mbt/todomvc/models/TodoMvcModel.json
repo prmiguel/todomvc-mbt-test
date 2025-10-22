@@ -1,0 +1,729 @@
+{
+  "models": [
+    {
+      "edges": [
+        {
+          "id": "024f6d8a-41df-44ff-8d79-de4bc52a4b30",
+          "name": "e_addTodo",
+          "sourceVertexId": "f020b87d-acd3-418e-878a-2552e3a299e0",
+          "targetVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "actions": [
+            "active++;"
+          ]
+        },
+        {
+          "id": "6fb1bcd7-2fc5-4c24-83a7-9eee84cb651b",
+          "name": "e_seeActiveTodos",
+          "sourceVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "targetVertexId": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+          "guard": "active >= 1"
+        },
+        {
+          "id": "2bdc5fa3-d16c-4323-863e-71bde2a07423",
+          "name": "e_seeCompletedTodos",
+          "sourceVertexId": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+          "targetVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "guard": "complete >= 1"
+        },
+        {
+          "id": "98ac68b3-6e18-4809-82a9-64180ba6e3c4",
+          "name": "e_seeCompletedTodos",
+          "sourceVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "targetVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "guard": "complete >= 1"
+        },
+        {
+          "id": "1058defb-c72b-424f-8e72-828ac75b92f4",
+          "name": "e_seeActiveTodos",
+          "sourceVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "targetVertexId": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+          "guard": "active >= 1"
+        },
+        {
+          "id": "0f80ce7f-c173-4909-98b6-be078cbe6191",
+          "name": "e_seeAllTodos",
+          "sourceVertexId": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+          "targetVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b"
+        },
+        {
+          "id": "ef06adc8-6c8b-47bb-8763-928f7862043f",
+          "name": "e_seeAllTodos",
+          "sourceVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "targetVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b"
+        },
+        {
+          "id": "5aca9d79-ceb5-4480-86a0-347b474496eb",
+          "name": "e_deleteUniqueTodo",
+          "sourceVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "targetVertexId": "f020b87d-acd3-418e-878a-2552e3a299e0",
+          "guard": "(active == 1 && complete == 0) ||  (active == 0 && complete == 1)",
+          "actions": [
+            "active = 0;",
+            "complete = 0;"
+          ]
+        },
+        {
+          "id": "db294e4e-f83c-46df-9c4d-e78f9229f513",
+          "name": "e_addAnotherTodo",
+          "sourceVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "targetVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "actions": [
+            "active++;"
+          ]
+        },
+        {
+          "id": "a005c08d-9c25-4e4d-b847-75f5795f39d0",
+          "name": "e_updateExistingTodo",
+          "sourceVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "targetVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "guard": "active >= 1"
+        },
+        {
+          "id": "b3ce6e7e-7a9e-4e04-b792-45cc8abfac36",
+          "name": "e_deleteActiveTodo",
+          "sourceVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "targetVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "actions": [
+            "active--;"
+          ],
+          "guard": "active >= 2"
+        },
+        {
+          "id": "e36902b2-2eaa-43d2-8490-ccc136b0c557",
+          "name": "e_completeTodo",
+          "sourceVertexId": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+          "targetVertexId": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+          "guard": "active >= 1",
+          "actions": [
+            "complete++;",
+            "active--;"
+          ]
+        },
+        {
+          "id": "a0e6e449-2570-4973-823d-1b7f7e25133c",
+          "name": "e_uncompleteTodo",
+          "sourceVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "targetVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "guard": "complete >= 1",
+          "actions": [
+            "complete--;",
+            "active++;"
+          ]
+        },
+        {
+          "id": "6c5fc141-6c8a-4c98-9aad-7c8e0650eaeb",
+          "name": "e_clearCompletedTodos",
+          "sourceVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "targetVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "guard": "complete >= 1 && active >= 1",
+          "actions": [
+            "complete = 0;"
+          ]
+        },
+        {
+          "id": "557f7388-9524-469d-9319-23aaabcd506d",
+          "name": "e_clearCompletedTodos",
+          "sourceVertexId": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "targetVertexId": "f020b87d-acd3-418e-878a-2552e3a299e0",
+          "guard": "active == 0 && complete >= 1",
+          "actions": [
+            "active = 0;",
+            "complete = 0;"
+          ]
+        },
+        {
+          "id": "233d6fa8-a930-4886-89a0-511915c010d4",
+          "name": "e_deleteCompletedTodo",
+          "sourceVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "targetVertexId": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "guard": "complete >= 2",
+          "actions": [
+            "complete--;"
+          ]
+        }
+      ],
+      "generator": "random(edge_coverage(100))",
+      "id": "c57a3c31-23c8-403a-a520-27f19382bb3a",
+      "name": "TodoMvcCoreModel",
+      "startElementId": "f020b87d-acd3-418e-878a-2552e3a299e0",
+      "vertices": [
+        {
+          "id": "f020b87d-acd3-418e-878a-2552e3a299e0",
+          "name": "v_EmptyList",
+          "properties": {
+            "x": -363.9370759866881,
+            "y": -383.1244987753339
+          },
+          "actions": [
+            "active = 0;",
+            "complete = 0;"
+          ]
+        },
+        {
+          "id": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+          "name": "v_AllTodos",
+          "properties": {
+            "x": -692.9370759866881,
+            "y": -133.1244987753339
+          }
+        },
+        {
+          "id": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+          "name": "v_ActiveTodos",
+          "properties": {
+            "x": -375.9370759866881,
+            "y": -195.1244987753339
+          }
+        },
+        {
+          "id": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+          "name": "v_CompletedTodos",
+          "properties": {
+            "x": -85.93707598668811,
+            "y": 92.8755012246661
+          }
+        }
+      ],
+      "editor": {
+        "elements": {
+          "edges": [
+            {
+              "data": {
+                "id": "233d6fa8-a930-4886-89a0-511915c010d4",
+                "name": "e_deleteCompletedTodo",
+                "source": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "target": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "color": "LightGreen",
+                "guard": "complete >= 2",
+                "actions": [
+                  "complete--;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "557f7388-9524-469d-9319-23aaabcd506d",
+                "name": "e_clearCompletedTodos",
+                "source": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "target": "f020b87d-acd3-418e-878a-2552e3a299e0",
+                "color": "LightGreen",
+                "guard": "active == 0 && complete >= 1",
+                "actions": [
+                  "active = 0;",
+                  "complete = 0;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "6c5fc141-6c8a-4c98-9aad-7c8e0650eaeb",
+                "name": "e_clearCompletedTodos",
+                "source": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "target": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "color": "LightGreen",
+                "guard": "complete >= 1 && active >= 1",
+                "actions": [
+                  "complete = 0;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "a0e6e449-2570-4973-823d-1b7f7e25133c",
+                "name": "e_uncompleteTodo",
+                "source": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "target": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "color": "LightGreen",
+                "guard": "complete >= 1",
+                "actions": [
+                  "complete--;",
+                  "active++;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "e36902b2-2eaa-43d2-8490-ccc136b0c557",
+                "name": "e_completeTodo",
+                "source": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+                "target": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+                "color": "LightGreen",
+                "guard": "active >= 1",
+                "actions": [
+                  "complete++;",
+                  "active--;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "b3ce6e7e-7a9e-4e04-b792-45cc8abfac36",
+                "name": "e_deleteActiveTodo",
+                "source": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "target": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "color": "LightGreen",
+                "guard": "active >= 2",
+                "actions": [
+                  "active--;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "a005c08d-9c25-4e4d-b847-75f5795f39d0",
+                "name": "e_updateExistingTodo",
+                "source": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "target": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "color": "LightGreen",
+                "guard": "active >= 1"
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "db294e4e-f83c-46df-9c4d-e78f9229f513",
+                "name": "e_addAnotherTodo",
+                "source": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "target": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "color": "LightGreen",
+                "actions": [
+                  "active++;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "5aca9d79-ceb5-4480-86a0-347b474496eb",
+                "name": "e_deleteUniqueTodo",
+                "source": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "target": "f020b87d-acd3-418e-878a-2552e3a299e0",
+                "color": "LightGreen",
+                "guard": "(active == 1 && complete == 0) ||  (active == 0 && complete == 1)",
+                "actions": [
+                  "active = 0;",
+                  "complete = 0;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "ef06adc8-6c8b-47bb-8763-928f7862043f",
+                "name": "e_seeAllTodos",
+                "source": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "target": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "color": "LightGreen"
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "0f80ce7f-c173-4909-98b6-be078cbe6191",
+                "name": "e_seeAllTodos",
+                "source": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+                "target": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "color": "LightGreen"
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "1058defb-c72b-424f-8e72-828ac75b92f4",
+                "name": "e_seeActiveTodos",
+                "source": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "target": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+                "color": "LightGreen",
+                "guard": "active >= 1"
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "98ac68b3-6e18-4809-82a9-64180ba6e3c4",
+                "name": "e_seeCompletedTodos",
+                "source": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "target": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "color": "LightGreen",
+                "guard": "complete >= 1"
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "2bdc5fa3-d16c-4323-863e-71bde2a07423",
+                "name": "e_seeCompletedTodos",
+                "source": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+                "target": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "color": "LightGreen",
+                "guard": "complete >= 1"
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "024f6d8a-41df-44ff-8d79-de4bc52a4b30",
+                "name": "e_addTodo",
+                "source": "f020b87d-acd3-418e-878a-2552e3a299e0",
+                "target": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "color": "LightGreen",
+                "actions": [
+                  "active++;"
+                ]
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "6fb1bcd7-2fc5-4c24-83a7-9eee84cb651b",
+                "name": "e_seeActiveTodos",
+                "source": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "target": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+                "color": "LightGreen",
+                "guard": "active >= 1"
+              },
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "group": "edges",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": true,
+              "classes": ""
+            }
+          ],
+          "nodes": [
+            {
+              "data": {
+                "id": "f020b87d-acd3-418e-878a-2552e3a299e0",
+                "name": "v_EmptyList",
+                "color": "LightGreen",
+                "actions": [
+                  "active = 0;",
+                  "complete = 0;"
+                ]
+              },
+              "position": {
+                "x": -363.9370759866881,
+                "y": -383.1244987753339
+              },
+              "group": "nodes",
+              "removed": false,
+              "selected": true,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": false,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "19e1f1af-fe36-4525-b6b6-b8076ccb9b8b",
+                "name": "v_AllTodos",
+                "color": "LightGreen"
+              },
+              "position": {
+                "x": -692.9370759866881,
+                "y": -133.1244987753339
+              },
+              "group": "nodes",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": false,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "54091fd2-e2fe-4538-ad1a-43afcaa0b74d",
+                "name": "v_ActiveTodos",
+                "color": "LightGreen"
+              },
+              "position": {
+                "x": -375.9370759866881,
+                "y": -195.1244987753339
+              },
+              "group": "nodes",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": false,
+              "classes": ""
+            },
+            {
+              "data": {
+                "id": "91cccd4b-ef38-4115-a18c-ad40ea432bb1",
+                "name": "v_CompletedTodos",
+                "color": "LightGreen"
+              },
+              "position": {
+                "x": -85.93707598668811,
+                "y": 92.8755012246661
+              },
+              "group": "nodes",
+              "removed": false,
+              "selected": false,
+              "selectable": true,
+              "locked": false,
+              "grabbable": true,
+              "pannable": false,
+              "classes": ""
+            }
+          ]
+        },
+        "style": [
+          {
+            "selector": "core",
+            "style": {
+              "active-bg-size": "0px"
+            }
+          },
+          {
+            "selector": "node",
+            "style": {
+              "label": "data(name)",
+              "text-wrap": "wrap",
+              "text-valign": "center",
+              "text-halign": "center",
+              "shape": "roundrectangle",
+              "width": "label",
+              "height": "label",
+              "color": "rgb(0,0,0)",
+              "background-color": "data(color)",
+              "line-color": "data(color)",
+              "padding": "10px"
+            }
+          },
+          {
+            "selector": "edge",
+            "style": {
+              "label": "data(name)",
+              "text-wrap": "wrap",
+              "curve-style": "bezier",
+              "text-rotation": "autorotate",
+              "target-arrow-shape": "triangle",
+              "width": "4px",
+              "line-color": "data(color)",
+              "target-arrow-color": "data(color)",
+              "background-color": "data(color)"
+            }
+          },
+          {
+            "selector": ":loop",
+            "style": {
+              "curve-style": "unbundled-bezier",
+              "control-point-step-size": "60px"
+            }
+          },
+          {
+            "selector": ":selected",
+            "style": {
+              "border-width": "4px",
+              "border-color": "rgb(0,0,0)",
+              "line-color": "rgb(0,0,0)",
+              "target-arrow-color": "rgb(0,0,0)"
+            }
+          }
+        ],
+        "data": {},
+        "zoomingEnabled": true,
+        "userZoomingEnabled": true,
+        "zoom": 1,
+        "minZoom": 1e-50,
+        "maxZoom": 1e+50,
+        "panningEnabled": true,
+        "userPanningEnabled": true,
+        "pan": {
+          "x": 966.9370759866881,
+          "y": 595.1244987753339
+        },
+        "boxSelectionEnabled": true,
+        "renderer": {
+          "name": "canvas"
+        }
+      }
+    }
+  ],
+  "selectedModelIndex": 0,
+  "selectedElementId": null,
+  "name": "TodoMvcTest"
+}
