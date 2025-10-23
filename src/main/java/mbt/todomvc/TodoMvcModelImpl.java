@@ -1,21 +1,50 @@
 package mbt.todomvc;
 
+import com.codeborne.selenide.Selenide;
 import mbt.todomvc.models.TodoMvcCoreModel;
 import org.graphwalker.core.machine.ExecutionContext;
+import org.graphwalker.java.annotation.AfterExecution;
+import org.graphwalker.java.annotation.BeforeElement;
 import org.graphwalker.java.annotation.BeforeExecution;
+import org.openqa.selenium.OutputType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.Random;
+import java.util.*;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static mbt.todomvc.utils.ImageUtils.optimizeImage;
+import static mbt.todomvc.utils.ResultUtils.saveResults;
 
 public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreModel {
+
+    private static final Logger logger = LoggerFactory.getLogger(TodoMvcModelImpl.class);
+    record Sequence(String type, String id, String image) {}
+    private static final List<Sequence> sequence = new ArrayList<>();
 
     @BeforeExecution
     public void s_openApp() {
         open("/");
+    }
+
+    @AfterExecution
+    public void t_collectData() {
+        saveResults("mbt-test-output.json", sequence);
+    }
+
+    @BeforeElement
+    public void beforeElement() {
+        String elementName = getCurrentElement().getName();
+        if (elementName.startsWith("e_")) {
+            sequence.add(new Sequence("edge", getCurrentElement().getId(), null));
+            return;
+        }
+        String screenshotAsBase64 = Selenide.screenshot(OutputType.BASE64);
+        screenshotAsBase64 = optimizeImage(Objects.requireNonNull(screenshotAsBase64));
+        sequence.add(new Sequence("vertex", getCurrentElement().getId(), screenshotAsBase64));
     }
 
     @Override
