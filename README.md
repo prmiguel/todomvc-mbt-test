@@ -133,7 +133,7 @@ After running the GraphWalker simulation, an **HTML report** is generated summar
 - Coverage of nodes and edges  
 - Random edge coverage goal (100%)
 
-🎬 **[GIF Demonstration (HTML Report)](https://prmiguel.github.io/media/b176fb8d-290c-446f-a0aa-7ef073b6ec1b.gif)**
+🎬 **[GIF Demonstration (HTML Report)](https://prmiguel.github.io/media/b176fb8d-290c-446f-a0aa-7ef073b6ec1b.gif)** - [Report](https://prmiguel.github.io/todomvc-mbt-test/)
 
 ---
 ## 🧩 Summary
