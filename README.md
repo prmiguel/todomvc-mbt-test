@@ -38,6 +38,32 @@ Using GraphWalker Studio, a state-transition model was created representing user
 
 The model defines **states (vertices)** and **actions (edges)** to represent transitions between different UI screens and internal application states.
 
+```mermaid
+graph TD
+  v_EmptyList["v_EmptyList"]
+  v_AllTodos["v_AllTodos"]
+  v_ActiveTodos["v_ActiveTodos"]
+  v_CompletedTodos["v_CompletedTodos"]
+
+  v_EmptyList -->|e_addTodo| v_AllTodos
+  v_AllTodos -->|e_addAnotherTodo| v_AllTodos
+  v_AllTodos -->|e_updateExistingTodo| v_AllTodos
+  v_AllTodos -->|e_deleteActiveTodo| v_AllTodos
+  v_AllTodos -->|e_deleteCompletedTodo| v_AllTodos
+  v_AllTodos -->|e_deleteUniqueTodo| v_EmptyList
+  v_AllTodos -->|e_seeActiveTodos| v_ActiveTodos
+  v_AllTodos -->|e_seeCompletedTodos| v_CompletedTodos
+  v_ActiveTodos -->|e_seeAllTodos| v_AllTodos
+  v_CompletedTodos -->|e_seeAllTodos| v_AllTodos
+  v_ActiveTodos -->|e_seeCompletedTodos| v_CompletedTodos
+  v_CompletedTodos -->|e_seeActiveTodos| v_ActiveTodos
+  v_ActiveTodos -->|e_completeTodo| v_ActiveTodos
+  v_CompletedTodos -->|e_uncompleteTodo| v_CompletedTodos
+  v_CompletedTodos -->|e_clearCompletedTodos_partial| v_CompletedTodos
+  v_CompletedTodos -->|e_clearCompletedTodos_empty| v_EmptyList
+
+```
+
 🎬 **[GIF Demonstration (Model Simulation)](https://prmiguel.github.io/media/c94d99c6-5963-4428-9c75-1a6f6796b90f.gif)** 
 
 ---
