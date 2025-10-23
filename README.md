@@ -29,7 +29,7 @@ Key behaviors explored:
 - Edge cases such as having an empty list, a single TODO, or toggling items between active and completed.
 
 🎬 **GIF Demonstration (Exploratory Testing)**  
-*(Place your exploratory testing recording here)*
+<img src="https://prmiguel.github.io/media/a54be40d-42e4-4d3b-9f4e-736df2aeb1f8.gif" width="500" height="400" />
 
 ---
 
@@ -40,7 +40,7 @@ Using GraphWalker Studio, a state-transition model was created representing user
 The model defines **states (vertices)** and **actions (edges)** to represent transitions between different UI screens and internal application states.
 
 🎬 **GIF Demonstration (Model Simulation)**  
-*(Place your GraphWalker Studio simulation recording here)*
+<img src="https://prmiguel.github.io/media/c94d99c6-5963-4428-9c75-1a6f6796b90f.gif" width="500" height="400" />
 
 ---
 
@@ -99,7 +99,7 @@ After modeling the system using GraphWalker, the model was transformed into exec
    - Run the simulation to cover all transitions (100% edge coverage)
 
 🎬 **GIF Demonstration (MBT Implementation & Execution)**  
-*(Place your recording of automated MBT test execution here)*
+<img src="https://prmiguel.github.io/media/a3921156-b232-473e-a4cd-3751e412d91b.gif" width="500" height="400" />
 
 ---
 ## 🧾 HTML Report
