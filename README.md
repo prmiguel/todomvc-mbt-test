@@ -28,8 +28,7 @@ Key behaviors explored:
 - Clearing completed tasks.
 - Edge cases such as having an empty list, a single TODO, or toggling items between active and completed.
 
-🎬 **GIF Demonstration (Exploratory Testing)**  
-<img src="https://prmiguel.github.io/media/a54be40d-42e4-4d3b-9f4e-736df2aeb1f8.gif" width="500" height="400" />
+🎬 **[GIF Demonstration (Exploratory Testing)](https://prmiguel.github.io/media/a54be40d-42e4-4d3b-9f4e-736df2aeb1f8.gif)**  
 
 ---
 
@@ -39,8 +38,7 @@ Using GraphWalker Studio, a state-transition model was created representing user
 
 The model defines **states (vertices)** and **actions (edges)** to represent transitions between different UI screens and internal application states.
 
-🎬 **GIF Demonstration (Model Simulation)**  
-<img src="https://prmiguel.github.io/media/c94d99c6-5963-4428-9c75-1a6f6796b90f.gif" width="500" height="400" />
+🎬 **[GIF Demonstration (Model Simulation)](https://prmiguel.github.io/media/c94d99c6-5963-4428-9c75-1a6f6796b90f.gif)** 
 
 ---
 
@@ -98,8 +96,7 @@ After modeling the system using GraphWalker, the model was transformed into exec
 4. **Run Tests**
    - Run the simulation to cover all transitions (100% edge coverage)
 
-🎬 **GIF Demonstration (MBT Implementation & Execution)**  
-<img src="https://prmiguel.github.io/media/a3921156-b232-473e-a4cd-3751e412d91b.gif" width="500" height="400" />
+🎬 **[GIF Demonstration (MBT Implementation & Execution)](https://prmiguel.github.io/media/a3921156-b232-473e-a4cd-3751e412d91b.gif)**  
 
 ---
 ## 🧾 HTML Report
@@ -110,8 +107,7 @@ After running the GraphWalker simulation, an **HTML report** is generated summar
 - Coverage of nodes and edges  
 - Random edge coverage goal (100%)
 
-🎬 GIF Demonstration (HTML Report)
-(Place your final report visualization here)
+🎬 **[GIF Demonstration (HTML Report)](https://prmiguel.github.io/media/.gif)**
 
 ---
 ## 🧩 Summary
