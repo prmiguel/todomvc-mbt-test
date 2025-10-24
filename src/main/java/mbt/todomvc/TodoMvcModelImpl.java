@@ -17,13 +17,16 @@ import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static mbt.todomvc.utils.ImageUtils.optimizeImage;
-import static mbt.todomvc.utils.ResultUtils.saveResults;
 
 public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreModel {
 
     private static final Logger logger = LoggerFactory.getLogger(TodoMvcModelImpl.class);
     record Sequence(String type, String id, String image) {}
     private static final List<Sequence> sequence = new ArrayList<>();
+
+    public List<Sequence> getSequence() {
+        return sequence;
+    }
 
     @BeforeExecution
     public void s_openApp() {
@@ -32,7 +35,6 @@ public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreMod
 
     @AfterExecution
     public void t_collectData() {
-        saveResults("mbt-test-output.json", sequence);
     }
 
     @BeforeElement
