@@ -28,8 +28,14 @@ jobs:
       with:
         repository: prmiguel/graphwalker-report
         path: graphwalker-report
+    - name: Checkout report
+      uses: actions/checkout@v4
+      with:
+        ref: report
+        path: report
     - name: Generate Report
       run: |
         cd ./graphwalker-report
         source replace_graph_data.sh $GITHUB_WORKSPACE/FullEdgeCoverageTest.json
         ls -la
+        mv index.html ../report/index.html
