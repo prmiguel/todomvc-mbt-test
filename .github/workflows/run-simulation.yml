@@ -36,9 +36,7 @@ jobs:
     - name: Generate Report
       run: |
         cd ./graphwalker-report
-        ls -la
         source replace_graph_data.sh $GITHUB_WORKSPACE/FullEdgeCoverageTest.json
-        ls -la
         mv -f ./index.html $GITHUB_WORKSPACE/report/index.html
         cd $GITHUB_WORKSPACE/report
         git config user.name "prmiguel"
