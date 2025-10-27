@@ -2,15 +2,20 @@ package mbt.todomvc;
 
 import com.codeborne.selenide.Selenide;
 import mbt.todomvc.models.TodoMvcCoreModel;
+import net.datafaker.Faker;
 import org.graphwalker.core.machine.ExecutionContext;
 import org.graphwalker.java.annotation.AfterExecution;
 import org.graphwalker.java.annotation.BeforeElement;
 import org.graphwalker.java.annotation.BeforeExecution;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
@@ -21,7 +26,6 @@ import static mbt.todomvc.utils.ImageUtils.optimizeImage;
 public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreModel {
 
     private static final Logger logger = LoggerFactory.getLogger(TodoMvcModelImpl.class);
-    record Sequence(String type, String id, String image) {}
     private static final List<Sequence> sequence = new ArrayList<>();
 
     public List<Sequence> getSequence() {
@@ -86,7 +90,8 @@ public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreMod
 
     @Override
     public void e_addTodo() {
-        $(".new-todo").setValue("make coffee").pressEnter();
+        var coffeeName = new Faker().coffee().name1();
+        $(".new-todo").setValue("Make " + coffeeName + " coffee").pressEnter();
         $(".filters a", 0).shouldHave(text("All")).click();
     }
 
@@ -97,7 +102,9 @@ public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreMod
 
     @Override
     public void e_addAnotherTodo() {
-        $(".new-todo").setValue("make coffee" + new Random().nextInt(100000, 999999)).pressEnter();
+        var coffeeName = new Faker().coffee().name1();
+        $(".new-todo").setValue(String.format("Make %s coffee ", coffeeName)
+                + new Random().nextInt(1000, 9999)).pressEnter();
     }
 
     @Override
@@ -119,7 +126,12 @@ public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreMod
 
     @Override
     public void e_updateExistingTodo() {
-        $$(".todo-list .view").shouldHave(sizeGreaterThanOrEqual(1));
+        $$(".todo-list .view").shouldHave(sizeGreaterThanOrEqual(1)
+                .because("There's no items to edit"));
+        $(".todo-list li", 0).hover().doubleClick();
+        $(".todo-list .input-container .new-todo").should(visible)
+                .sendKeys(" - " + new Faker().coffee().variety() + Keys.ENTER);
+        $(".todo-list .input-container .new-todo").should(not(visible));
     }
 
     @Override
@@ -130,5 +142,8 @@ public class TodoMvcModelImpl extends ExecutionContext implements TodoMvcCoreMod
     @Override
     public void e_deleteActiveTodo() {
         $(".todo-list [class=\"\"]", 0).hover().find(".destroy").click();
+    }
+
+    record Sequence(String type, String id, String image) {
     }
 }
